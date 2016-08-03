@@ -25,6 +25,7 @@ public class Client {
 
     public static void main(String[] args) throws Exception {
         Client client = new Client();
+
         client.init();
 
 //        client.insert();
@@ -126,7 +127,9 @@ public class Client {
     }
 
     public void init() {
+        // 默认连接服务器地址： 127.0.0.1：27017
         MongoClient mongoClient = new MongoClient();
+
         this.db = mongoClient.getDatabase("test");
     }
 
