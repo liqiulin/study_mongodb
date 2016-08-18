@@ -20,6 +20,7 @@ public class UserTest extends MongodbBaseTest {
 
     @Test
     public void should_insert_and_get_user() {
+        users = db.getCollection("user");
         final DBObject userDocument = new BasicDBObjectBuilder()
                 .add("name", "kiwi")
                 .get();
