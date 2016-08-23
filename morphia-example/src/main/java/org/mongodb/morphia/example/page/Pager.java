@@ -8,8 +8,6 @@ import java.util.Map;
 
 /**
  * @Description: 分页组件
- * @author dingc  
- * @date 2015年9月2日 下午3:39:34 
  */
 public class Pager<T> implements Serializable {
     private static final long serialVersionUID = -6814398952058550296L;
@@ -34,7 +32,7 @@ public class Pager<T> implements Serializable {
     /**
      * 参数表
      */
-    private Map<String, Object> params = new HashMap<String, Object>();
+    private Map<String, Object> params = new HashMap();
     /**
      * 数据
      */

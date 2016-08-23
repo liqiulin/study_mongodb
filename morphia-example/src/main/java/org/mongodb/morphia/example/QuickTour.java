@@ -5,13 +5,8 @@ import org.bson.types.ObjectId;
 import org.junit.Assert;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Field;
-import org.mongodb.morphia.annotations.Id;
-import org.mongodb.morphia.annotations.Index;
-import org.mongodb.morphia.annotations.Indexes;
-import org.mongodb.morphia.annotations.Property;
-import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.*;
+import org.mongodb.morphia.example.page.Pager;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
 import org.mongodb.morphia.query.UpdateResults;
@@ -80,8 +75,31 @@ public final class QuickTour {
         final Query<Employee> overPaidQuery = datastore.createQuery(Employee.class)
                                                        .filter("salary >", 100000);
         datastore.delete(overPaidQuery);
+
+
+        // 分页查询
+        Pager<Employee> page = new Pager<Employee>();
+        page.setCurrentPage(0);
+        page.setPageSize(10);
+        page = queryPager(datastore, page);
+
+        System.out.println("page[{" + page + "}]");
+    }
+
+    public static Pager<Employee> queryPager(Datastore datastore, Pager<Employee> page) {
+        Query query = datastore.createQuery(Employee.class);
+        long count = query.countAll();
+        page.setPageTotal((int)count);
+
+        List<Employee> pageDatas = query.offset(page.offset()).limit(page.limit()).asList();
+        page.setData(pageDatas);
+
+        return page;
     }
 }
+
+
+
 
 @Entity("employees")
 @Indexes(@Index(value = "salary", fields = @Field("salary")))
