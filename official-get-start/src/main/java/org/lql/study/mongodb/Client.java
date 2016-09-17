@@ -116,6 +116,10 @@ public class Client {
 
     }
 
+    public void corverIndexQuery() {
+
+    }
+
     public void queryWithGreatThan() {
         db.getCollection(collectionName).find(
                 new Document("grades.score", new Document("$gt", 30)));

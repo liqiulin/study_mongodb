@@ -84,6 +84,7 @@ public final class QuickTour {
         page = queryPager(datastore, page);
 
         System.out.println("page[{" + page + "}]");
+
     }
 
     public static Pager<Employee> queryPager(Datastore datastore, Pager<Employee> page) {
