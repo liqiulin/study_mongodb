@@ -56,9 +56,9 @@
         <dependency>
             <groupId>com.github.fakemongo</groupId>
             <artifactId>fongo</artifactId>
-            <version>1.6.5</version>
-
-            <!--<scope>test</scope>-->
+            <version>2.0.6</version>
+            <scope>test</scope>
         </dependency>
-	</dependencies>
+
+    </dependencies>
 </project>
