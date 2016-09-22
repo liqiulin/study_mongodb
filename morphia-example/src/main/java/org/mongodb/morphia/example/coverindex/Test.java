@@ -41,6 +41,11 @@ public class Test {
         if(students != null) {
             students.forEach(s -> System.out.println(s));
         }
+
+        students = studentDAO.QueryByNameWithCoverIndex("lisi");
+        if(students != null) {
+            students.forEach(s -> System.out.println(s));
+        }
     }
 }
 

@@ -11,4 +11,6 @@ public interface StudentDAO {
     ObjectId save(Student student);
 
     List<Student> queryByNameWithoutId(String name);
+
+    List<Student> QueryByNameWithCoverIndex(String name);
 }
