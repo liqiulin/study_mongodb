@@ -34,7 +34,7 @@ public class StudentDAOImpl implements StudentDAO {
         Query query = datastore.createQuery(Student.class);
         query.filter("name", name);
 
-        //仅返回索引包含的字段
+        //仅返回索引包含的字段，使用时需注意风险！
         query.returnKey();
 
         System.out.println(query.getFieldsObject());

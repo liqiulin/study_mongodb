@@ -49,6 +49,7 @@ public class StudenDAOTest {
         studentDAO.save(new Student("zhangsan", 18));
         studentDAO.save(new Student(queryName, age));
         List<Student> students = studentDAO.queryByNameWithoutId(queryName);
+        students.forEach(student -> System.out.println(student));
         Assert.assertTrue(students.size() == 1);
         Assert.assertTrue(queryName.equals(students.get(0).getName()));
         Assert.assertTrue(students.get(0).getAge() == age);
